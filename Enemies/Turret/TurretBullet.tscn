@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Enemies/Turret/TurretBullet.gd" type="Script" id=1]
+
+[node name="TurretBullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( 4, 0, -4, -4, -4, 4 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 4, 0, -4, -4, -4, 4 )
+[connection signal="body_entered" from="." to="." method="_on_TurretBullet_body_entered"]

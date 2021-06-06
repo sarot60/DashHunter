@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cheeky_monkey_fun_app_playful_cheeky.wav-d10da4cfd8a0c97e359d2df1e3bcce16.sample"
+
+[deps]
+
+source_file="res://Assets/Music/zapsplat/cheeky_monkey_fun_app_playful_cheeky.wav"
+dest_files=[ "res://.import/cheeky_monkey_fun_app_playful_cheeky.wav-d10da4cfd8a0c97e359d2df1e3bcce16.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

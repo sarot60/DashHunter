@@ -1,0 +1,283 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_10px.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://Assets/Enemies/Bee/BossBeeWaspyBoi.png" type="Texture" id=2]
+[ext_resource path="res://GUI/MapStation/MapStation.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Theme2/map_station_bg.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_8px.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://Assets/Enemies/Minotaur - Sprite Sheet.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Enemies/MechaStoneGolem/PNG sheet/Character_sheet.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Enemies/HermitBoss/Idle/HermitBoss_Idle_0.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Enemies/Fire Worm/Sprites/Worm/Idle.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Theme2/button_size_1.png" type="Texture" id=10]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.521569, 0.521569, 0.321569, 1 )
+
+[node name="MapStation" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.784314 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Bg" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -180.0
+margin_top = -100.0
+margin_right = 180.0
+margin_bottom = 100.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Bg"]
+margin_left = 29.0
+margin_top = 22.0
+margin_right = 337.0
+margin_bottom = 191.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Bg/ScrollContainer"]
+margin_right = 288.0
+margin_bottom = 216.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GVDun1" type="Panel" parent="Bg/ScrollContainer/VBoxContainer"]
+margin_right = 288.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 288, 40 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="GVDun1Button" type="TextureButton" parent="Bg/ScrollContainer/VBoxContainer/GVDun1"]
+margin_left = 212.0
+margin_top = 9.0
+margin_right = 276.0
+margin_bottom = 33.0
+texture_normal = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun1/GVDun1Button"]
+margin_right = 64.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 1 )
+text = "WARP"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun1"]
+margin_left = 55.0
+margin_top = 6.0
+margin_right = 160.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 5 )
+text = "GREENVETA DUNGEON 1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Bg/ScrollContainer/VBoxContainer/GVDun1"]
+position = Vector2( 21, 19 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 6, -2, 24, 24 )
+
+[node name="GVDun2" type="Panel" parent="Bg/ScrollContainer/VBoxContainer"]
+margin_top = 44.0
+margin_right = 288.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 288, 40 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="GVDun2Button" type="TextureButton" parent="Bg/ScrollContainer/VBoxContainer/GVDun2"]
+margin_left = 212.0
+margin_top = 9.0
+margin_right = 276.0
+margin_bottom = 33.0
+texture_normal = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun2/GVDun2Button"]
+margin_right = 64.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "WARP"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun2"]
+margin_left = 55.0
+margin_top = 5.0
+margin_right = 163.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 5 )
+text = "GREENVETA DUNGEON 2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Bg/ScrollContainer/VBoxContainer/GVDun2"]
+position = Vector2( 20, 19 )
+texture = ExtResource( 6 )
+region_enabled = true
+region_rect = Rect2( 28, 20, 34, 32 )
+
+[node name="GVDun3" type="Panel" parent="Bg/ScrollContainer/VBoxContainer"]
+margin_top = 88.0
+margin_right = 288.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 288, 40 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="GVDun3Button" type="TextureButton" parent="Bg/ScrollContainer/VBoxContainer/GVDun3"]
+margin_left = 212.0
+margin_top = 8.0
+margin_right = 276.0
+margin_bottom = 32.0
+texture_normal = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun3/GVDun3Button"]
+margin_right = 64.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "WARP"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun3"]
+margin_left = 55.0
+margin_top = 5.0
+margin_right = 163.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 5 )
+text = "GREENVETA DUNGEON 3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite2" type="Sprite" parent="Bg/ScrollContainer/VBoxContainer/GVDun3"]
+position = Vector2( 23, 22 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 34, 24, 32, 28 )
+
+[node name="Sprite" type="Sprite" parent="Bg/ScrollContainer/VBoxContainer/GVDun3"]
+visible = false
+position = Vector2( 19, 20 )
+texture = ExtResource( 8 )
+region_enabled = true
+region_rect = Rect2( 70, 48, 44, 30 )
+
+[node name="GVDun4" type="Panel" parent="Bg/ScrollContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 288.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 288, 40 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="GVDun4Button" type="TextureButton" parent="Bg/ScrollContainer/VBoxContainer/GVDun4"]
+margin_left = 212.0
+margin_top = 9.0
+margin_right = 276.0
+margin_bottom = 33.0
+texture_normal = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun4/GVDun4Button"]
+margin_right = 64.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "WARP"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun4"]
+margin_left = 55.0
+margin_top = 5.0
+margin_right = 163.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 5 )
+text = "GREENVETA DUNGEON 4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Bg/ScrollContainer/VBoxContainer/GVDun4"]
+position = Vector2( 21, 19 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 36, 22, 34, 32 )
+
+[node name="GVDun5" type="Panel" parent="Bg/ScrollContainer/VBoxContainer"]
+margin_top = 176.0
+margin_right = 288.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 288, 40 )
+custom_styles/panel = SubResource( 1 )
+
+[node name="GVDun5Button" type="TextureButton" parent="Bg/ScrollContainer/VBoxContainer/GVDun5"]
+margin_left = 212.0
+margin_top = 9.0
+margin_right = 276.0
+margin_bottom = 33.0
+texture_normal = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun5/GVDun5Button"]
+margin_right = 64.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "WARP"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="Bg/ScrollContainer/VBoxContainer/GVDun5"]
+margin_left = 55.0
+margin_top = 4.0
+margin_right = 163.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+text = "GREENVETA DUNGEON 5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Bg/ScrollContainer/VBoxContainer/GVDun5"]
+position = Vector2( 21, 19 )
+texture = ExtResource( 7 )
+region_enabled = true
+region_rect = Rect2( 34, 24, 32, 28 )
+
+[node name="Label" type="Label" parent="Bg"]
+margin_top = 2.0
+margin_right = 360.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 5 )
+text = "MAP STATION"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

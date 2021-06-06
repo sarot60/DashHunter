@@ -1,0 +1,177 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Assets/Enemies/DarkSpider/Spider Sprite Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Other/ShadowWhite_16x16.png" type="Texture" id=2]
+[ext_resource path="res://Overlap/Hurtboxes/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/DarkSpider/DarkSpider.gd" type="Script" id=4]
+[ext_resource path="res://Effects/CreateEffectObject.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/PlayerDetectionZone/PlayerDetectionZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Overlap/ShootZone/ShootZone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/DarkSpider/Cobweb.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SFX/InsectDeathSFX.tscn" type="PackedScene" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.0
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 4.0
+height = 4.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 36, 39 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 16 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 9 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "run"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 9, 14 ]
+}
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 256.0
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 144.014
+
+[node name="DarkSpider" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource( 4 )
+detect_radius = 200
+fire_rate = 1.0
+Bullet = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+offset = Vector2( 0, -16 )
+flip_h = true
+vframes = 16
+hframes = 9
+frame = 36
+
+[node name="Shadow" type="Sprite" parent="Sprite"]
+self_modulate = Color( 0, 0, 0, 0.196078 )
+show_behind_parent = true
+position = Vector2( 0, -6 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+shape = SubResource( 1 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -4 )
+rotation = 1.5708
+shape = SubResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/attack = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/run = SubResource( 5 )
+
+[node name="CreateEffectObject" parent="." instance=ExtResource( 5 )]
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+self_modulate = Color( 0.796078, 0.309804, 0.309804, 0.443137 )
+shape = SubResource( 6 )
+
+[node name="ShootZone" parent="." instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="ShootZone" index="0"]
+self_modulate = Color( 0.952941, 1, 0.137255, 0.439216 )
+shape = SubResource( 7 )
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="InsectDeathSFX" parent="." instance=ExtResource( 9 )]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="ShootZone" to="." method="_on_ShootZone_body_entered"]
+[connection signal="body_exited" from="ShootZone" to="." method="_on_ShootZone_body_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+
+[editable path="Hurtbox"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="ShootZone"]

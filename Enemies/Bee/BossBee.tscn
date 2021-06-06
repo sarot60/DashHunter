@@ -1,0 +1,248 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Assets/Enemies/Bee/BossBeeWaspyBoi.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Other/ShadowWhite_32x32.png" type="Texture" id=2]
+[ext_resource path="res://Overlap/Hurtboxes/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Enemies/Bee/BossBee.gd" type="Script" id=4]
+[ext_resource path="res://Effects/CreateEffectObject.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Enemies/PlayerDetectionZone/PlayerDetectionZone.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Overlap/ShootZone/ShootZone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/Bee/BeeBullet.tscn" type="PackedScene" id=8]
+[ext_resource path="res://SFX/HitSound.tscn" type="PackedScene" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.32456
+
+[sub_resource type="Animation" id=2]
+resource_name = "attack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 16 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 306.026
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 178.045
+
+[sub_resource type="CircleShape2D" id=9]
+
+[sub_resource type="CircleShape2D" id=10]
+radius = 288.007
+
+[node name="BossBee" type="KinematicBody2D"]
+collision_layer = 16
+collision_mask = 3
+script = ExtResource( 4 )
+detect_radius = 200
+fire_rate = 2.0
+Bullet = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 16 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -32 )
+hframes = 2
+
+[node name="Shadow" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 0.196078 )
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fly"
+anims/attack = SubResource( 2 )
+anims/fly = SubResource( 3 )
+anims/idle = SubResource( 4 )
+anims/take_fall = SubResource( 5 )
+anims/take_fly = SubResource( 6 )
+
+[node name="PlayerDetectionZone" parent="." instance=ExtResource( 6 )]
+
+[node name="CollisionShape2D" parent="PlayerDetectionZone" index="0"]
+self_modulate = Color( 0.564706, 0.184314, 0.184314, 0.427451 )
+shape = SubResource( 7 )
+
+[node name="ShootZone" parent="." instance=ExtResource( 7 )]
+
+[node name="CollisionShape2D" parent="ShootZone" index="0"]
+self_modulate = Color( 0.623529, 0.698039, 0.192157, 1 )
+shape = SubResource( 8 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 3 )]
+collision_layer = 8
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource( 9 )
+disabled = true
+
+[node name="Visibility" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Visibility"]
+self_modulate = Color( 0.819608, 0.807843, 0.145098, 0.52549 )
+shape = SubResource( 10 )
+
+[node name="TakeFlyTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FallTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CreateEffectObject" parent="." instance=ExtResource( 5 )]
+
+[node name="Henchman" type="Node2D" parent="."]
+
+[node name="HitSound" parent="." instance=ExtResource( 9 )]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="body_entered" from="Visibility" to="." method="_on_Visibility_body_entered"]
+[connection signal="body_exited" from="Visibility" to="." method="_on_Visibility_body_exited"]
+[connection signal="timeout" from="TakeFlyTimer" to="." method="_on_TakeFlyTimer_timeout"]
+[connection signal="timeout" from="FallTimer" to="." method="_on_FallTimer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]
+
+[editable path="PlayerDetectionZone"]
+
+[editable path="ShootZone"]
+
+[editable path="Hurtbox"]

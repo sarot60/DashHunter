@@ -1,0 +1,449 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_8px.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://Assets/Enemies/Bee/BossBeeWaspyBoi.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Theme2/boss_bar_frame.png" type="Texture" id=3]
+[ext_resource path="res://Assets/HUD_And_GUI/confirm_dialog.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Theme2/boss_hp_bar.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Theme2/HealthIcon.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Theme2/HealthIconEmpty.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Theme2/exit_dungeon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Background/time_and_life_bg.png" type="Texture" id=9]
+[ext_resource path="res://HUD/DungeonHUD/DungeonHUD.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Theme2/button_size_1.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_16px.fnt" type="BitmapFont" id=12]
+[ext_resource path="res://Assets/HUD_And_GUI/gold-key-empty.png" type="Texture" id=13]
+[ext_resource path="res://Assets/HUD_And_GUI/gold-key.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_10px.fnt" type="BitmapFont" id=15]
+[ext_resource path="res://Assets/Background/end_stage_bg.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Theme2/button_style_2.png" type="Texture" id=17]
+[ext_resource path="res://Assets/SFX/Mixkit/mixkit-bomb-explosion-in-battle-2800.wav" type="AudioStream" id=18]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_out"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorBg/ConfirmBg:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "alert"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("StageNumber:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StageNumber:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2, 0.5, 1.3, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="DungeonHUD" type="CanvasLayer"]
+script = ExtResource( 10 )
+
+[node name="ExitDunButton" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -107.0
+margin_top = 33.0
+margin_right = -75.0
+margin_bottom = 49.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GateItemRequire" type="HBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -131.0
+margin_top = 52.0
+margin_right = -75.0
+margin_bottom = 68.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key1" type="TextureRect" parent="GateItemRequire"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key2" type="TextureRect" parent="GateItemRequire"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+texture = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Key3" type="TextureRect" parent="GateItemRequire"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 16.0
+texture = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DungeonStateBg" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_top = 8.0
+margin_right = 64.0
+margin_bottom = 24.0
+texture = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StopWatch" type="Label" parent="DungeonStateBg"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -60.0
+margin_right = 4.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "00:00:00"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LifeIcon" type="HBoxContainer" parent="DungeonStateBg"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = 22.0
+margin_right = 62.0
+margin_bottom = 16.0
+custom_constants/separation = -4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="health_1" type="TextureRect" parent="DungeonStateBg/LifeIcon"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 6 )
+
+[node name="health_2" type="TextureRect" parent="DungeonStateBg/LifeIcon"]
+margin_left = 12.0
+margin_right = 28.0
+margin_bottom = 16.0
+texture = ExtResource( 6 )
+
+[node name="health_3" type="TextureRect" parent="DungeonStateBg/LifeIcon"]
+margin_left = 24.0
+margin_right = 40.0
+margin_bottom = 16.0
+texture = ExtResource( 7 )
+
+[node name="StageNumber" type="Label" parent="DungeonStateBg"]
+margin_left = -64.0
+margin_top = -1.0
+margin_right = -4.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "STAGE X"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BossBarFrame" type="TextureRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -64.0
+margin_top = 40.0
+margin_right = 64.0
+margin_bottom = 48.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BossHealthBar" type="TextureProgress" parent="BossBarFrame"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -63.0
+margin_top = 1.0
+margin_right = 63.0
+margin_bottom = 7.0
+value = 80.0
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="BossBarFrame"]
+visible = false
+position = Vector2( 2, 0 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 48, 0, 24, 24 )
+
+[node name="Clock" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="MSTimer" type="Timer" parent="."]
+wait_time = 0.001
+
+[node name="ConfirmDialog" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ConfirmDialog"]
+anims/fade_out = SubResource( 1 )
+
+[node name="ColorBg" type="ColorRect" parent="ConfirmDialog"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ConfirmBg" type="TextureRect" parent="ConfirmDialog/ColorBg"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -47.0
+margin_right = 100.0
+margin_bottom = 33.0
+rect_scale = Vector2( 1e-05, 1e-05 )
+rect_pivot_offset = Vector2( 100, 40 )
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PopupHeader" type="Label" parent="ConfirmDialog/ColorBg/ConfirmBg"]
+margin_right = 198.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "WARNING"
+align = 1
+valign = 1
+
+[node name="YesButton" type="TextureButton" parent="ConfirmDialog/ColorBg/ConfirmBg"]
+margin_left = 20.0
+margin_top = 82.0
+margin_right = 84.0
+margin_bottom = 106.0
+texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ConfirmDialog/ColorBg/ConfirmBg/YesButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "YES"
+align = 1
+valign = 1
+
+[node name="NoButton" type="TextureButton" parent="ConfirmDialog/ColorBg/ConfirmBg"]
+margin_left = 116.0
+margin_top = 82.0
+margin_right = 180.0
+margin_bottom = 106.0
+texture_normal = ExtResource( 11 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ConfirmDialog/ColorBg/ConfirmBg/NoButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "NO"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="ConfirmDialog/ColorBg/ConfirmBg"]
+margin_left = 20.0
+margin_top = 19.0
+margin_right = 186.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "The dungeon is not finished yet, do you want to leave the dungeon?"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StageAlert" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="StageNumber" type="Label" parent="StageAlert"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.0
+margin_top = -79.0
+margin_right = 64.0
+margin_bottom = -61.0
+custom_fonts/font = ExtResource( 12 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "STAGE XXX"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="StageAlert"]
+anims/alert = SubResource( 2 )
+
+[node name="EndStageAlert" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="EndStage" type="Control" parent="EndStageAlert"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="EndStageAlert/EndStage"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="EndStageAlert/EndStage"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -150.0
+margin_top = -50.0
+margin_right = 150.0
+margin_bottom = 50.0
+texture = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButtonEndGame" type="TextureButton" parent="EndStageAlert/EndStage/TextureRect"]
+margin_left = 78.0
+margin_top = 74.0
+margin_right = 126.0
+margin_bottom = 90.0
+texture_normal = ExtResource( 17 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EndStageAlert/EndStage/TextureRect/ExitButtonEndGame"]
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 1 )
+text = "Exit"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="TextureButton" parent="EndStageAlert/EndStage/TextureRect"]
+margin_left = 184.0
+margin_top = 74.0
+margin_right = 232.0
+margin_bottom = 90.0
+texture_normal = ExtResource( 17 )
+
+[node name="Label" type="Label" parent="EndStageAlert/EndStage/TextureRect/CloseButton"]
+margin_top = 3.0
+margin_right = 48.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 1 )
+text = "Close"
+align = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="EndStageAlert/EndStage/TextureRect"]
+margin_left = 22.0
+margin_top = 12.0
+margin_right = 278.0
+margin_bottom = 66.0
+custom_fonts/normal_font = ExtResource( 15 )
+bbcode_enabled = true
+bbcode_text = "xxxx"
+text = "xxxx"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GateOpenSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="exit_hint" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -256.0
+margin_top = -55.0
+margin_right = 256.0
+margin_bottom = -37.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "CLEAR DUNGEON SUCCESSFUL. CLICK EXIT FOR MOVE TO GV VILLAGE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="ExitDunButton" to="." method="_on_ExitDunButton_pressed"]
+[connection signal="timeout" from="Clock" to="." method="_on_Clock_timeout"]
+[connection signal="timeout" from="MSTimer" to="." method="_on_MSTimer_timeout"]

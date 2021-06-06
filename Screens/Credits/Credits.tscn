@@ -1,0 +1,114 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_10px.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://Assets/Theme/GUI.png" type="Texture" id=2]
+[ext_resource path="res://Screens/Credits/Credits.gd" type="Script" id=3]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_16px.fnt" type="BitmapFont" id=4]
+[ext_resource path="res://Assets/Theme2/button_size_1.png" type="Texture" id=5]
+
+[node name="Credits" type="CanvasLayer"]
+layer = 99
+script = ExtResource( 3 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.34902, 0.192157, 0.192157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.0
+margin_top = -128.0
+margin_right = 38.0
+margin_bottom = -110.0
+custom_fonts/font = ExtResource( 4 )
+text = "CREDITS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="TextureButton" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = 104.0
+margin_right = 32.0
+margin_bottom = 128.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Background/Back"]
+visible = false
+scale = Vector2( 1.625, 1.25 )
+texture = ExtResource( 2 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 144, 80, 48, 16 )
+
+[node name="Label" type="Label" parent="Background/Back"]
+margin_right = 64.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 1 )
+text = "BACK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -179.0
+margin_top = -106.0
+margin_right = 179.0
+margin_bottom = 100.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "Graphics
+	Itch.io
+	OpenGameArt.org
+	Pimen
+	Penusbmic
+	ArMM1998
+	Elthen's Pixel Art Shop
+	fulifuli.tumblr.com
+	LuizMelo
+	Eli Cuaycong
+	itch.io 0x72
+	itch.io Superdark
+	hugues laborde
+	GentleCatStudio
+	Kicked-in-Teeth
+	Quintino Pixels
+	Stealthix
+	Alex's Assets
+	Kronovi-
+	
+Source Code
+	HeartBeast
+	Securas - Sealed Bite
+	Youtube - mizziz
+
+Music & SFX
+	Mixkit
+	SoundBible
+	ZapSplat
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Background/Back" to="." method="_on_Back_pressed"]

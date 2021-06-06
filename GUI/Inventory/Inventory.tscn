@@ -1,0 +1,919 @@
+[gd_scene load_steps=33 format=2]
+
+[ext_resource path="res://Assets/Theme2/inventory_background.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Other/white-64x64.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Theme2/player_equipment.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Character/player_green_sprite.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Theme2/player_stats_background.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Theme2/close_button_10x10.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Fonts/tinyfont.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://GUI/Inventory/Inventory.gd" type="Script" id=8]
+[ext_resource path="res://GUI/Inventory/Slot.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Theme2/item_bg.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Theme2/health_icon_stats.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Theme2/mp_icon_stats.png" type="Texture" id=12]
+[ext_resource path="res://Assets/Theme2/stamina_icon_stats.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Theme2/damage_icon_stats.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Theme2/def_icon_stats.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Theme2/move_speed_stats.png" type="Texture" id=16]
+[ext_resource path="res://Assets/Theme2/crit_dmg_icon_stats.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Theme2/crit_rate_icon_stats.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Theme2/xp_bar_frame_stats.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Theme2/xp_bar.png" type="Texture" id=20]
+[ext_resource path="res://Assets/Theme2/use_item_bg.png" type="Texture" id=21]
+[ext_resource path="res://Assets/Theme2/hint_equ_slot/sword_hint_slot.png" type="Texture" id=22]
+[ext_resource path="res://Assets/Theme2/hint_equ_slot/shield_hint.png" type="Texture" id=23]
+[ext_resource path="res://Assets/Theme2/hint_equ_slot/shirt_hint.png" type="Texture" id=24]
+[ext_resource path="res://Assets/Theme2/hint_equ_slot/shoes_hint_slot.png" type="Texture" id=25]
+[ext_resource path="res://Assets/Theme2/hint_equ_slot/accessories_hint_slot.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Theme2/hint_equ_slot/helmet_hint_slot.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_8px.fnt" type="BitmapFont" id=28]
+[ext_resource path="res://Assets/Background/item_detail_bg.png" type="Texture" id=29]
+[ext_resource path="res://GUI/Inventory/ItemDetail.gd" type="Script" id=30]
+[ext_resource path="res://Assets/SFX/Mixkit/use_item_sfx.wav" type="AudioStream" id=31]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 24, 24 )
+
+[node name="Inventory" type="CanvasLayer"]
+layer = 5
+script = ExtResource( 8 )
+
+[node name="InventoryPopup" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blur" type="TextureRect" parent="InventoryPopup"]
+visible = false
+self_modulate = Color( 0, 0, 0, 0.196078 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="inventory_background" type="TextureRect" parent="InventoryPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 51.0
+margin_top = -72.0
+margin_right = 211.0
+margin_bottom = 72.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="header" type="Label" parent="InventoryPopup/inventory_background"]
+margin_right = 160.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "INVENTORY"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="TouchScreenButton" parent="InventoryPopup/inventory_background"]
+position = Vector2( 146, 3 )
+normal = ExtResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InventoryPopup/inventory_background"]
+visible = false
+margin_left = 12.0
+margin_top = 25.0
+margin_right = 148.0
+margin_bottom = 133.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="InventoryPopup/inventory_background/VBoxContainer"]
+margin_right = 136.0
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
+columns = 5
+
+[node name="player_equipment" type="TextureRect" parent="InventoryPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -92.0
+margin_top = -72.0
+margin_right = 52.0
+margin_bottom = 56.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="header" type="Label" parent="InventoryPopup/player_equipment"]
+margin_right = 144.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "EQUIPMENT"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="InventoryPopup/player_equipment"]
+position = Vector2( 72, 46 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 16, 16, 32, 32 )
+
+[node name="Level" type="Label" parent="InventoryPopup/player_equipment"]
+margin_left = 26.0
+margin_top = 108.0
+margin_right = 64.0
+margin_bottom = 121.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color = Color( 0.12549, 0.839216, 0.780392, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "LEVEL : "
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="InventoryPopup/player_equipment/Level"]
+margin_left = 39.0
+margin_right = 68.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XP" type="Label" parent="InventoryPopup/player_equipment"]
+margin_left = 26.0
+margin_top = 121.0
+margin_right = 45.0
+margin_bottom = 134.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color = Color( 0.839216, 0.94902, 0.392157, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "XP :"
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="xp_bar_frame_stats" type="Sprite" parent="InventoryPopup/player_equipment/XP"]
+position = Vector2( 37, 5 )
+texture = ExtResource( 19 )
+
+[node name="TextureProgress" type="TextureProgress" parent="InventoryPopup/player_equipment/XP/xp_bar_frame_stats"]
+margin_left = -14.0
+margin_top = -2.0
+margin_right = 14.0
+margin_bottom = 1.0
+value = 70.0
+texture_progress = ExtResource( 20 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="InventoryPopup/player_equipment/XP"]
+margin_left = 56.0
+margin_top = -1.0
+margin_right = 95.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "000/999"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hint_slot" type="Control" parent="InventoryPopup/player_equipment"]
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sword_hint_slot" type="Sprite" parent="InventoryPopup/player_equipment/hint_slot"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 17, 30 )
+texture = ExtResource( 22 )
+
+[node name="shield_hint" type="Sprite" parent="InventoryPopup/player_equipment/hint_slot"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 127, 30 )
+texture = ExtResource( 23 )
+
+[node name="shirt_hint" type="Sprite" parent="InventoryPopup/player_equipment/hint_slot"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 17, 59 )
+texture = ExtResource( 24 )
+
+[node name="shoes_hint_slot" type="Sprite" parent="InventoryPopup/player_equipment/hint_slot"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 127, 58 )
+texture = ExtResource( 25 )
+
+[node name="helmet_hint_slot" type="Sprite" parent="InventoryPopup/player_equipment/hint_slot"]
+self_modulate = Color( 1, 1, 1, 0.596078 )
+position = Vector2( 17, 86 )
+texture = ExtResource( 27 )
+
+[node name="accessories_hint_slot" type="Sprite" parent="InventoryPopup/player_equipment/hint_slot"]
+self_modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 127, 86 )
+texture = ExtResource( 26 )
+
+[node name="Equipment" type="Control" parent="InventoryPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Panel" parent="InventoryPopup/Equipment"]
+margin_left = -66.0
+margin_top = -54.0
+margin_right = -42.0
+margin_bottom = -30.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot2" type="Panel" parent="InventoryPopup/Equipment"]
+margin_left = 2.0
+margin_top = -54.0
+margin_right = 26.0
+margin_bottom = -30.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot3" type="Panel" parent="InventoryPopup/Equipment"]
+margin_left = -66.0
+margin_top = -26.0
+margin_right = -42.0
+margin_bottom = -2.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot4" type="Panel" parent="InventoryPopup/Equipment"]
+margin_left = 2.0
+margin_top = -26.0
+margin_right = 26.0
+margin_bottom = -2.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot5" type="Panel" parent="InventoryPopup/Equipment"]
+margin_left = -66.0
+margin_top = 2.0
+margin_right = -42.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot6" type="Panel" parent="InventoryPopup/Equipment"]
+margin_left = -24.0
+margin_top = 2.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot7" type="Panel" parent="InventoryPopup/Equipment"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 26.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Backpack" type="GridContainer" parent="InventoryPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 64.0
+margin_top = -49.0
+margin_right = 200.0
+margin_bottom = 59.0
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Panel" parent="InventoryPopup/Backpack"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot2" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 28.0
+margin_right = 52.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot3" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 56.0
+margin_right = 80.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot4" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 84.0
+margin_right = 108.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot5" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 112.0
+margin_right = 136.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot6" type="Panel" parent="InventoryPopup/Backpack"]
+margin_top = 28.0
+margin_right = 24.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot7" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 28.0
+margin_top = 28.0
+margin_right = 52.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot8" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 56.0
+margin_top = 28.0
+margin_right = 80.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot9" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 84.0
+margin_top = 28.0
+margin_right = 108.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot10" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 112.0
+margin_top = 28.0
+margin_right = 136.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot11" type="Panel" parent="InventoryPopup/Backpack"]
+margin_top = 56.0
+margin_right = 24.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot12" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 28.0
+margin_top = 56.0
+margin_right = 52.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot13" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 56.0
+margin_top = 56.0
+margin_right = 80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot14" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 84.0
+margin_top = 56.0
+margin_right = 108.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot15" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 112.0
+margin_top = 56.0
+margin_right = 136.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot16" type="Panel" parent="InventoryPopup/Backpack"]
+margin_top = 84.0
+margin_right = 24.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot17" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 28.0
+margin_top = 84.0
+margin_right = 52.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot18" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 56.0
+margin_top = 84.0
+margin_right = 80.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot19" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 84.0
+margin_top = 84.0
+margin_right = 108.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot20" type="Panel" parent="InventoryPopup/Backpack"]
+margin_left = 112.0
+margin_top = 84.0
+margin_right = 136.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="player_stats_background" type="TextureRect" parent="InventoryPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -219.0
+margin_top = -72.0
+margin_right = -91.0
+margin_bottom = 56.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="Label" parent="InventoryPopup/player_stats_background"]
+margin_right = 128.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "STATS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="Sprite" parent="InventoryPopup/player_stats_background"]
+position = Vector2( 22, 21 )
+texture = ExtResource( 11 )
+
+[node name="Label" type="Label" parent="InventoryPopup/player_stats_background/hp"]
+margin_left = 38.0
+margin_top = -4.0
+margin_right = 80.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "999/999"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp" type="Label" parent="InventoryPopup/player_stats_background/hp"]
+margin_left = 16.0
+margin_top = -4.0
+margin_right = 35.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "HP :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp" type="Sprite" parent="InventoryPopup/player_stats_background"]
+position = Vector2( 22, 36 )
+texture = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="InventoryPopup/player_stats_background/mp"]
+margin_left = 38.0
+margin_top = -4.0
+margin_right = 80.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "999/999"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="mp" type="Label" parent="InventoryPopup/player_stats_background/mp"]
+margin_left = 16.0
+margin_top = -4.0
+margin_right = 35.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "MP :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stamina" type="Sprite" parent="InventoryPopup/player_stats_background"]
+position = Vector2( 22, 53 )
+texture = ExtResource( 13 )
+
+[node name="Label" type="Label" parent="InventoryPopup/player_stats_background/stamina"]
+margin_left = 44.0
+margin_top = -5.0
+margin_right = 86.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "999/999"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="stamina" type="Label" parent="InventoryPopup/player_stats_background/stamina"]
+margin_left = 16.0
+margin_top = -5.0
+margin_right = 41.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "STM :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damage" type="Sprite" parent="InventoryPopup/player_stats_background"]
+position = Vector2( 22, 69 )
+texture = ExtResource( 14 )
+
+[node name="Label" type="Label" parent="InventoryPopup/player_stats_background/damage"]
+margin_left = 62.0
+margin_top = -5.0
+margin_right = 90.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="damage" type="Label" parent="InventoryPopup/player_stats_background/damage"]
+margin_left = 16.0
+margin_top = -5.0
+margin_right = 59.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "DAMAGE :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="def" type="Sprite" parent="InventoryPopup/player_stats_background"]
+position = Vector2( 22, 84 )
+texture = ExtResource( 15 )
+
+[node name="Label" type="Label" parent="InventoryPopup/player_stats_background/def"]
+margin_left = 62.0
+margin_top = -5.0
+margin_right = 90.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="def" type="Label" parent="InventoryPopup/player_stats_background/def"]
+margin_left = 16.0
+margin_top = -5.0
+margin_right = 59.0
+margin_bottom = 8.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "DEFEND :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="speed" type="Sprite" parent="InventoryPopup/player_stats_background"]
+position = Vector2( 21, 98 )
+texture = ExtResource( 16 )
+
+[node name="Label" type="Label" parent="InventoryPopup/player_stats_background/speed"]
+margin_left = 57.0
+margin_top = -4.0
+margin_right = 85.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="speed" type="Label" parent="InventoryPopup/player_stats_background/speed"]
+margin_left = 17.0
+margin_top = -4.0
+margin_right = 54.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "SPEED :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crit_dmg" type="Sprite" parent="InventoryPopup/player_stats_background"]
+position = Vector2( 21, 113 )
+texture = ExtResource( 17 )
+
+[node name="Label" type="Label" parent="InventoryPopup/player_stats_background/crit_dmg"]
+margin_left = 62.0
+margin_top = -4.0
+margin_right = 90.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crit_dmg" type="Label" parent="InventoryPopup/player_stats_background/crit_dmg"]
+margin_left = 17.0
+margin_top = -4.0
+margin_right = 59.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "CRI DMG :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crit_rate" type="Sprite" parent="InventoryPopup/player_stats_background"]
+position = Vector2( 21, 128 )
+texture = ExtResource( 18 )
+
+[node name="Label" type="Label" parent="InventoryPopup/player_stats_background/crit_rate"]
+margin_left = 68.0
+margin_top = -3.0
+margin_right = 96.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="crit_rate" type="Label" parent="InventoryPopup/player_stats_background/crit_rate"]
+margin_left = 17.0
+margin_top = -3.0
+margin_right = 65.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 28 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "CRI RATE :"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemDetail" type="TextureRect" parent="InventoryPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -215.0
+margin_top = -56.0
+margin_right = -95.0
+margin_bottom = 64.0
+texture = ExtResource( 29 )
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeaderLabel" type="Label" parent="InventoryPopup/ItemDetail"]
+margin_right = 120.0
+margin_bottom = 13.0
+custom_fonts/font = ExtResource( 28 )
+text = "ITEM DETAIL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SlotImage" type="Panel" parent="InventoryPopup/ItemDetail"]
+margin_left = 49.0
+margin_top = 17.0
+margin_right = 73.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemName" type="Label" parent="InventoryPopup/ItemDetail"]
+visible = false
+margin_left = 5.0
+margin_top = 44.0
+margin_right = 115.0
+margin_bottom = 57.0
+custom_fonts/font = ExtResource( 28 )
+text = "Item name"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemLevel" type="Label" parent="InventoryPopup/ItemDetail"]
+visible = false
+margin_left = 5.0
+margin_top = 59.0
+margin_right = 114.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 28 )
+text = "Item level"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="InventoryPopup/ItemDetail"]
+margin_left = 12.0
+margin_top = 43.0
+margin_right = 110.0
+margin_bottom = 110.0
+custom_fonts/normal_font = ExtResource( 28 )
+bbcode_enabled = true
+bbcode_text = "xxxxxx"
+text = "xxxxxx"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UseItem" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -67.0
+margin_top = -61.0
+margin_right = 67.0
+margin_bottom = -31.0
+texture = ExtResource( 21 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UseItem" type="GridContainer" parent="UseItem"]
+margin_left = 5.0
+margin_top = 3.0
+margin_right = 129.0
+margin_bottom = 27.0
+custom_constants/vseparation = 1
+custom_constants/hseparation = 1
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Slot1" type="Panel" parent="UseItem/UseItem"]
+margin_right = 24.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot2" type="Panel" parent="UseItem/UseItem"]
+margin_left = 25.0
+margin_right = 49.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot3" type="Panel" parent="UseItem/UseItem"]
+margin_left = 50.0
+margin_right = 74.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot4" type="Panel" parent="UseItem/UseItem"]
+margin_left = 75.0
+margin_right = 99.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="Slot5" type="Panel" parent="UseItem/UseItem"]
+margin_left = 100.0
+margin_right = 124.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 24, 24 )
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 9 )
+
+[node name="use_item_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 31 )
+volume_db = -10.0
+[connection signal="pressed" from="InventoryPopup/inventory_background/CloseButton" to="." method="_on_CloseButton_pressed"]

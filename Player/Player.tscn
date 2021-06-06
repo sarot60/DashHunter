@@ -1,0 +1,351 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://Assets/0x72_16x16DungeonTileset.v4.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Controls/Joystick/Joystick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Controls/JoystickAttack/JoystickAttackButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Character/Character_9.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Icons/Dash.png" type="Texture" id=6]
+[ext_resource path="res://Assets/Icons/DashBackground.png" type="Texture" id=7]
+[ext_resource path="res://Assets/HUD_And_GUI/StaminaIcon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/HUD_And_GUI/AttackCursor.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Fonts/tinyfont.fnt" type="BitmapFont" id=10]
+[ext_resource path="res://Assets/Other/white-32x32.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Other/ShadowWhite_16x16.png" type="Texture" id=12]
+[ext_resource path="res://Overlap/Hurtboxes/Hurtbox.tscn" type="PackedScene" id=13]
+
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="Animation" id=3]
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 0, 144, 24 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.3
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Rect2( 0, 24, 144, 24 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 6 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 5 ]
+}
+
+[sub_resource type="Animation" id=5]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon/Sword:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -30.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitBox/SwordHitBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Weapon/Sword/Line2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon/Sword:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 190.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HitBox/SwordHitBox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Weapon/Sword/Line2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Weapon/Sword/Line2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 28.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id=8]
+radius = 4.0
+height = 8.0
+
+[node name="Player" type="KinematicBody2D"]
+pause_mode = 1
+collision_layer = 2
+script = ExtResource( 2 )
+
+[node name="Shadow" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 0.313726 )
+position = Vector2( 0, -5 )
+texture = ExtResource( 12 )
+
+[node name="Weapon" type="Position2D" parent="."]
+position = Vector2( 0, -8 )
+
+[node name="Sword" type="Sprite" parent="Weapon"]
+position = Vector2( 8, 0 )
+rotation = -0.523599
+texture = ExtResource( 1 )
+offset = Vector2( 0, -16 )
+region_enabled = true
+region_rect = Rect2( 176, 32, 16, 32 )
+
+[node name="Line2D" type="Line2D" parent="Weapon/Sword"]
+visible = false
+position = Vector2( -6.12435, -17.3923 )
+points = PoolVector2Array( 3.4641, 2, -27.0526, 2.85639 )
+width = 25.0
+default_color = Color( 1, 1, 1, 1 )
+gradient = SubResource( 1 )
+
+[node name="test_rotation" type="Position2D" parent="."]
+position = Vector2( 0, -8 )
+
+[node name="Sprite2" type="Sprite" parent="test_rotation"]
+modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( 32, 0 )
+scale = Vector2( 0.75, 0.125 )
+texture = ExtResource( 11 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 5 )
+offset = Vector2( 0, -12 )
+hframes = 6
+region_enabled = true
+region_rect = Rect2( 0, 0, 144, 24 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+smoothing_speed = 8.0
+editor_draw_limits = true
+
+[node name="Control" type="CanvasLayer" parent="."]
+
+[node name="Joystick" type="Control" parent="Control"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -100.0
+margin_right = 100.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Joystick" parent="Control/Joystick" instance=ExtResource( 3 )]
+position = Vector2( 60, 36 )
+
+[node name="BottomRightButtonGroup" type="Control" parent="Control"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -164.0
+margin_top = -68.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Control/BottomRightButtonGroup"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+position = Vector2( 0, 12 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="DashButton" type="TouchScreenButton" parent="Control/BottomRightButtonGroup"]
+position = Vector2( 0, 12 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="Control/BottomRightButtonGroup/DashButton"]
+position = Vector2( 36, 12 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Control/BottomRightButtonGroup/DashButton"]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 26.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 10 )
+text = "DASH"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="JoystickAttackButton" parent="Control/BottomRightButtonGroup" instance=ExtResource( 4 )]
+position = Vector2( 92, 4 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 3 )
+anims/run = SubResource( 4 )
+
+[node name="AnimationPlayerAttack" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 5 )
+anims/sword_attack = SubResource( 6 )
+
+[node name="HitBox" type="Position2D" parent="."]
+position = Vector2( 0, -8 )
+
+[node name="SwordHitBox" type="Area2D" parent="HitBox"]
+collision_layer = 0
+collision_mask = 2147483656
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox/SwordHitBox"]
+position = Vector2( 52, 0 )
+rotation = 1.5708
+shape = SubResource( 7 )
+disabled = true
+
+[node name="CursorAttack" type="Position2D" parent="."]
+position = Vector2( 48, 48 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AttackCursor" type="Sprite" parent="CursorAttack"]
+z_index = 1
+texture = ExtResource( 9 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 13 )]
+collision_layer = 4
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, -8 )
+shape = SubResource( 8 )
+[connection signal="pressed" from="Control/BottomRightButtonGroup/DashButton" to="." method="_on_DashButton_pressed"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="Hurtbox"]

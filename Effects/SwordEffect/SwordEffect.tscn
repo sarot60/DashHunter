@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Effects/SwordEffect/SwordEffect.gd" type="Script" id=2]
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=1]
+resource_name = "play"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 96, 0 ) ]
+}
+
+[node name="SwordEffect" type="Node2D"]
+z_index = 1
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+
+[node name="Line2D" type="Line2D" parent="Sprite"]
+position = Vector2( -1, 0 )
+points = PoolVector2Array( 1, 0, -63, 0 )
+width = 56.0
+default_color = Color( 0.988235, 0.992157, 1, 1 )
+gradient = SubResource( 2 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Sprite"]
+polygon = PoolVector2Array( 0, -28, 24, 0, 0, 28 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "play"
+anims/play = SubResource( 1 )
+
+[node name="AlphaTween" type="Tween" parent="."]
+[connection signal="tween_completed" from="AlphaTween" to="." method="_on_AlphaTween_tween_completed"]

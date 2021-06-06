@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Effects/HitEffect3/HitEffect3.gd" type="Script" id=1]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[node name="HitEffect3" type="Line2D"]
+z_index = 1
+points = PoolVector2Array( 160, 0, -160, 0 )
+width = 4.0
+default_color = Color( 1, 1, 1, 0.784314 )
+gradient = SubResource( 1 )
+script = ExtResource( 1 )

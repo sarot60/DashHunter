@@ -1,0 +1,163 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Assets/Character/npc/merchant/idle.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Emotions/emote_faceHappy.png" type="Texture" id=2]
+[ext_resource path="res://Overlap/PlayerDetection/PlayerDetection.tscn" type="PackedScene" id=3]
+[ext_resource path="res://NPC/NPC.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Fonts/tinyfont.fnt" type="BitmapFont" id=5]
+[ext_resource path="res://Assets/Other/ShadowWhite_16x16.png" type="Texture" id=6]
+[ext_resource path="res://NPC/SelectTalkButton.tscn" type="PackedScene" id=7]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.0
+
+[sub_resource type="Animation" id=2]
+resource_name = "play"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -16 ), Vector2( 0, -32 ), Vector2( 0, -32 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 18.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:vframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0, 3 ]
+}
+
+[node name="NPC_Brooke" type="KinematicBody2D"]
+collision_layer = 64
+script = ExtResource( 4 )
+NPC_NAME = "Brooke"
+
+[node name="Shadow" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 0.196078 )
+position = Vector2( 0, -4 )
+texture = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -16 )
+texture = ExtResource( 1 )
+hframes = 4
+frame = 3
+region_rect = Rect2( 96, 240, 16, 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+shape = SubResource( 1 )
+
+[node name="Emotion" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Emotion"]
+position = Vector2( 0, -16 )
+scale = Vector2( 1e-05, 1e-05 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Emotion"]
+autoplay = "play"
+anims/play = SubResource( 2 )
+
+[node name="HintTalk" type="Sprite" parent="Emotion"]
+
+[node name="PlayerDetection" parent="." instance=ExtResource( 3 )]
+collision_mask = 2
+
+[node name="CollisionShape2D" parent="PlayerDetection" index="0"]
+shape = SubResource( 3 )
+
+[node name="NameLabel" type="Label" parent="."]
+margin_left = -20.0
+margin_top = -64.0
+margin_right = 20.0
+margin_bottom = -56.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "XXXXX"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TypeLabel" type="Label" parent="."]
+margin_left = -20.0
+margin_top = -54.0
+margin_right = 20.0
+margin_bottom = -46.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "XXXXX"
+align = 1
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "idle"
+anims/idle = SubResource( 4 )
+
+[node name="SelectTalkButton" parent="." instance=ExtResource( 7 )]
+
+[editable path="PlayerDetection"]

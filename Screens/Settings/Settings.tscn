@@ -1,0 +1,200 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_10px.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://Screens/Settings/Settings.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Theme2/button_size_1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_16px.fnt" type="BitmapFont" id=4]
+[ext_resource path="res://Assets/Theme2/button_style_2.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_8px.fnt" type="BitmapFont" id=6]
+[ext_resource path="res://Assets/Background/item_detail_bg.png" type="Texture" id=7]
+
+[node name="Settings" type="CanvasLayer"]
+layer = 99
+script = ExtResource( 2 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.34902, 0.192157, 0.192157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -44.0
+margin_top = -112.0
+margin_right = 44.0
+margin_bottom = -94.0
+custom_fonts/font = ExtResource( 4 )
+text = "SETTINGS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Back" type="TextureButton" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -31.0
+margin_top = 76.0
+margin_right = 33.0
+margin_bottom = 102.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="Background/Back"]
+texture = ExtResource( 3 )
+centered = false
+region_rect = Rect2( 144, 80, 48, 16 )
+
+[node name="Label" type="Label" parent="Background/Back"]
+margin_right = 64.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 1 )
+text = "BACK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicOpen" type="TextureButton" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 80.0
+margin_top = -52.0
+margin_right = 128.0
+margin_bottom = -36.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/MusicOpen"]
+margin_right = 48.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 6 )
+text = "OPEN"
+align = 1
+valign = 1
+
+[node name="TextureButton3" type="TextureButton" parent="Background"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 50.0
+margin_top = 8.0
+margin_right = 98.0
+margin_bottom = 24.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/TextureButton3"]
+margin_right = 48.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 6 )
+text = "OPEN"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicMute" type="TextureButton" parent="Background"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 80.0
+margin_top = 2.0
+margin_right = 128.0
+margin_bottom = 18.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Background/MusicMute"]
+margin_right = 48.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 6 )
+text = "MUTE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton4" type="TextureButton" parent="Background"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 112.0
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 24.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Background/TextureButton4"]
+margin_right = 48.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 6 )
+text = "MUTE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="music_status_bg" type="Sprite" parent="."]
+position = Vector2( 162, 132 )
+texture = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="music_status_bg"]
+margin_left = -38.0
+margin_top = -26.0
+margin_right = 39.0
+margin_bottom = -14.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "MUSIC STATUS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Status" type="Label" parent="music_status_bg"]
+margin_left = -38.0
+margin_top = 12.0
+margin_right = 42.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "OPEN OR MUTE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Background/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Background/MusicOpen" to="." method="_on_MusicOpen_pressed"]
+[connection signal="pressed" from="Background/MusicMute" to="." method="_on_MusicMute_pressed"]

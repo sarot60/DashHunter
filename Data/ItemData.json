@@ -1,0 +1,22 @@
+{
+    "Iron Sword": {
+        "ItemCatagory": "Sword",
+        "ItemAttack": 3,
+        "ItemSpeed": 0.75,
+        "StackSize": 1,
+        "Description": "Sowrdddddd"
+    },
+    "Slime Potion": {
+        "ItemCatagory": "Consumable",
+        "AddHealth": 5,
+        "AddEnergy": 32,
+        "StackSize": 99,
+        "Description": "Slime Potion"
+    },
+    "Tree Branch": {
+        "ItemCatagory": "Resource",
+        "StackSize": 99,
+        "Description": "Tree Branch hhhhhhhhhhhh"
+    }
+
+}

@@ -1,0 +1,460 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_8px.fnt" type="BitmapFont" id=1]
+[ext_resource path="res://Assets/Theme2/button_size_1.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Background/dialogue_background.png" type="Texture" id=3]
+[ext_resource path="res://NPC/NPC_GUI/NPC_Dialogue.gd" type="Script" id=4]
+[ext_resource path="res://Assets/Theme2/button_style_2.png" type="Texture" id=5]
+[ext_resource path="res://GUI/MapStation/MapStation.tscn" type="PackedScene" id=6]
+[ext_resource path="res://NPC/NPC_GUI/MerchantShop.tscn" type="PackedScene" id=7]
+[ext_resource path="res://NPC/NPC_GUI/NPC_GUI.gd" type="Script" id=8]
+[ext_resource path="res://NPC/NPC_GUI/AlchemistShop.tscn" type="PackedScene" id=9]
+[ext_resource path="res://NPC/NPC_GUI/BlacksmithShop.tscn" type="PackedScene" id=10]
+[ext_resource path="res://NPC/NPC_GUI/BlacksmithUpgrade.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_10px.fnt" type="BitmapFont" id=12]
+[ext_resource path="res://NPC/NPC_GUI/SellItem.tscn" type="PackedScene" id=13]
+
+[node name="NPC_GUI" type="CanvasLayer"]
+script = ExtResource( 8 )
+
+[node name="NPC_Button" type="CanvasLayer" parent="."]
+
+[node name="GENERAL" type="GridContainer" parent="NPC_Button"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = -18.0
+margin_right = 96.0
+margin_bottom = 44.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestButton" type="TextureButton" parent="NPC_Button/GENERAL"]
+margin_right = 64.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/GENERAL/QuestButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "QUEST"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MERCHANT" type="GridContainer" parent="NPC_Button"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = -38.0
+margin_right = 96.0
+margin_bottom = 42.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestButton" type="TextureButton" parent="NPC_Button/MERCHANT"]
+margin_right = 64.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/MERCHANT/QuestButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "QUEST"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopButton" type="TextureButton" parent="NPC_Button/MERCHANT"]
+margin_top = 28.0
+margin_right = 64.0
+margin_bottom = 52.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/MERCHANT/ShopButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "SHOP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SellItem" type="TextureButton" parent="NPC_Button/MERCHANT"]
+margin_top = 56.0
+margin_right = 64.0
+margin_bottom = 80.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/MERCHANT/SellItem"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "SELL ITEM"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ALCHEMIST" type="GridContainer" parent="NPC_Button"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 48.0
+margin_top = -18.0
+margin_right = 112.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestButton" type="TextureButton" parent="NPC_Button/ALCHEMIST"]
+margin_right = 64.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/ALCHEMIST/QuestButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "QUEST"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopButton" type="TextureButton" parent="NPC_Button/ALCHEMIST"]
+margin_top = 28.0
+margin_right = 64.0
+margin_bottom = 52.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/ALCHEMIST/ShopButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "SHOP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PROFESSOR" type="GridContainer" parent="NPC_Button"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 48.0
+margin_top = -20.0
+margin_right = 112.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestButton" type="TextureButton" parent="NPC_Button/PROFESSOR"]
+margin_right = 64.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/PROFESSOR/QuestButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "QUEST"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TRANSPORT" type="GridContainer" parent="NPC_Button"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 32.0
+margin_top = -18.0
+margin_right = 96.0
+margin_bottom = 22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestButton" type="TextureButton" parent="NPC_Button/TRANSPORT"]
+margin_right = 64.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/TRANSPORT/QuestButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "QUEST"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WarpButton" type="TextureButton" parent="NPC_Button/TRANSPORT"]
+margin_top = 28.0
+margin_right = 64.0
+margin_bottom = 52.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/TRANSPORT/WarpButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "WARP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BLACKSMITH" type="GridContainer" parent="NPC_Button"]
+visible = false
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 48.0
+margin_top = -39.0
+margin_right = 112.0
+margin_bottom = 41.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestButton" type="TextureButton" parent="NPC_Button/BLACKSMITH"]
+margin_right = 64.0
+margin_bottom = 24.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/BLACKSMITH/QuestButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "QUEST"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShopButton" type="TextureButton" parent="NPC_Button/BLACKSMITH"]
+margin_top = 28.0
+margin_right = 64.0
+margin_bottom = 52.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/BLACKSMITH/ShopButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "SHOP"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradeButton" type="TextureButton" parent="NPC_Button/BLACKSMITH"]
+margin_top = 56.0
+margin_right = 64.0
+margin_bottom = 80.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="NPC_Button/BLACKSMITH/UpgradeButton"]
+margin_right = 64.0
+margin_bottom = 28.0
+custom_fonts/font = ExtResource( 1 )
+text = "UPGRADE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NPC_Popup" type="CanvasLayer" parent="."]
+layer = 10
+
+[node name="MapStation" parent="NPC_Popup" instance=ExtResource( 6 )]
+visible = false
+
+[node name="MerchantShop" parent="NPC_Popup" instance=ExtResource( 7 )]
+visible = false
+
+[node name="AlchemistShop" parent="NPC_Popup" instance=ExtResource( 9 )]
+visible = false
+
+[node name="BlacksmithShop" parent="NPC_Popup" instance=ExtResource( 10 )]
+visible = false
+
+[node name="BlacksmithUpgrade" parent="NPC_Popup" instance=ExtResource( 11 )]
+visible = false
+
+[node name="SellItem" parent="NPC_Popup" instance=ExtResource( 13 )]
+visible = false
+
+[node name="ProfessorSkill" type="Control" parent="NPC_Popup"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NPC_Dialogue" type="CanvasLayer" parent="."]
+layer = 6
+script = ExtResource( 4 )
+
+[node name="DialoguePanel" type="TextureRect" parent="NPC_Dialogue"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -230.0
+margin_top = -96.0
+margin_right = 230.0
+margin_bottom = -16.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CloseButton" type="TextureButton" parent="NPC_Dialogue/DialoguePanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = -26.0
+margin_right = 64.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NPC_Dialogue/DialoguePanel/CloseButton"]
+margin_right = 48.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+text = "Close"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptButton" type="TextureButton" parent="NPC_Dialogue/DialoguePanel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -26.0
+margin_right = -16.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NPC_Dialogue/DialoguePanel/AcceptButton"]
+margin_right = 48.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+text = "Accept"
+align = 1
+valign = 1
+
+[node name="SuccessButton" type="TextureButton" parent="NPC_Dialogue/DialoguePanel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -26.0
+margin_right = -16.0
+margin_bottom = -10.0
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="NPC_Dialogue/DialoguePanel/SuccessButton"]
+margin_right = 48.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+text = "Success"
+align = 1
+valign = 1
+
+[node name="NpcName" type="Label" parent="NPC_Dialogue/DialoguePanel"]
+margin_left = 12.0
+margin_top = 6.0
+margin_right = 122.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 12 )
+text = "NPC NAME"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NPC_Dialogue/DialoguePanel"]
+margin_left = 22.0
+margin_top = 20.0
+margin_right = 438.0
+margin_bottom = 52.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+text = "xxxxxx"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogTimer" type="Timer" parent="NPC_Dialogue"]
+wait_time = 0.05
+[connection signal="timeout" from="NPC_Dialogue/DialogTimer" to="NPC_Dialogue" method="_on_DialogTimer_timeout"]

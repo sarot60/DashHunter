@@ -1,0 +1,136 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "PlaySkill",
+"language": "GDScript",
+"path": "res://Player2/PlaySkill.gd"
+}, {
+"base": "Control",
+"class": "QuestGUI",
+"language": "GDScript",
+"path": "res://GUI/Quest/Quest.gd"
+}, {
+"base": "Panel",
+"class": "QuestPanel",
+"language": "GDScript",
+"path": "res://GUI/Quest/QuestPanelObject.gd"
+} ]
+_global_script_class_icons={
+"PlaySkill": "",
+"QuestGUI": "",
+"QuestPanel": ""
+}
+
+[application]
+
+config/name="Dash Hunter"
+run/main_scene="res://Screens/Main/Main.tscn"
+config/icon="res://game_icon.png"
+
+[autoload]
+
+JsonData="*res://Data/JSONData.gd"
+JsonGameMetaData="*res://Scripts/JsonGameMetaData.gd"
+Game="*res://Scripts/Game.gd"
+game_state="*res://Scripts/game_state.gd"
+Check="*res://Scripts/Check.gd"
+PlayerInventory="*res://GUI/Inventory/PlayerInventory.gd"
+PlayerStats="*res://Scripts/PlayerStats.gd"
+EnimyStats="*res://Scripts/EnimyStats.gd"
+AddExperience="*res://Scripts/AddExperience.gd"
+PlayerManageStats="*res://Scripts/PlayerManageStats.gd"
+QuestManage="*res://Scripts/QuestManage.gd"
+Test="*res://Test_/Test_.gd"
+
+[display]
+
+window/size/width=512
+window/size/height=288
+window/size/test_width=1920
+window/size/test_height=1080
+window/handheld/orientation="sensor_landscape"
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[input]
+
+move_down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+move_right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+ui_space={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+pause={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+left_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+btn_quit={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777217,"unicode":0,"echo":false,"script":null)
+ ]
+}
+attack={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":81,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="PlayerHurtBox"
+2d_physics/layer_4="EnemyHurtBox"
+2d_physics/layer_5="Enemy"
+2d_physics/layer_6="Turret_Visibility"
+2d_physics/layer_7="NPC"
+2d_physics/layer_8="ItemDrop"
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=1
+quality/2d/use_pixel_snap=true
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"
+2d/snapping/use_gpu_pixel_snap=true

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Effects/AttackLineEffect/AttackLine.gd" type="Script" id=1]
+
+[node name="AttackLine" type="Line2D"]
+z_index = 1
+points = PoolVector2Array( 512, 0, -512, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 0.784314 )
+script = ExtResource( 1 )

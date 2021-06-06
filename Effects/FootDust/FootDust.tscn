@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Effects/FootDust/FootDust.gd" type="Script" id=1]
+
+[node name="FootDust" type="CPUParticles2D"]
+rotation = -1.5708
+emitting = false
+lifetime = 0.3
+one_shot = true
+speed_scale = 0.5
+explosiveness = 0.5
+spread = 60.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 25.0
+angular_velocity = 10.0
+angular_velocity_random = 1.0
+radial_accel = 35.0
+scale_amount = 3.0
+scale_amount_random = 1.0
+color = Color( 0.890196, 0.823529, 0.760784, 1 )
+script = ExtResource( 1 )

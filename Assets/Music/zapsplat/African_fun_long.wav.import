@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/African_fun_long.wav-95e1726438ca0286bc1f689f26c7d210.sample"
+
+[deps]
+
+source_file="res://Assets/Music/zapsplat/African_fun_long.wav"
+dest_files=[ "res://.import/African_fun_long.wav-95e1726438ca0286bc1f689f26c7d210.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

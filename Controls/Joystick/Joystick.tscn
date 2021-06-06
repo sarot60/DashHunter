@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Controls/Joystick/JoystickButton.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Control/joystick_background.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Control/joystick_1.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Control/joystick_not_pressed.png" type="Texture" id=5]
+
+[node name="Joystick" type="Node2D"]
+
+[node name="joystick_background" type="Sprite" parent="."]
+self_modulate = Color( 0, 0, 0, 0.313726 )
+texture = ExtResource( 3 )
+
+[node name="joystick" type="Sprite" parent="."]
+texture = ExtResource( 4 )
+
+[node name="JoystickButton" type="TouchScreenButton" parent="."]
+position = Vector2( -24, -24 )
+normal = ExtResource( 5 )
+pressed = ExtResource( 5 )
+script = ExtResource( 1 )

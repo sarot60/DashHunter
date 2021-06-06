@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/awesomeness.wav-a3e25c2b7cc98b82991938c6ea85b10b.sample"
+
+[deps]
+
+source_file="res://Assets/Music/awesomeness.wav"
+dest_files=[ "res://.import/awesomeness.wav-a3e25c2b7cc98b82991938c6ea85b10b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

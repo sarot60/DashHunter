@@ -1,0 +1,1158 @@
+[gd_scene load_steps=45 format=2]
+
+[ext_resource path="res://Assets/Theme/GUI.png" type="Texture" id=1]
+[ext_resource path="res://PerformanceCheck/FPS/FPS.gd" type="Script" id=2]
+[ext_resource path="res://Assets/HUD_And_GUI/MiniMapBackground.png" type="Texture" id=3]
+[ext_resource path="res://HUD/HealthBar/HealthBar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Screens/Pause/PauseMenu.gd" type="Script" id=5]
+[ext_resource path="res://GUI/GUI.gd" type="Script" id=6]
+[ext_resource path="res://Assets/Theme2/nanner-32-32x.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Fonts/tinyfont.fnt" type="BitmapFont" id=8]
+[ext_resource path="res://Assets/Theme3/aap-64-32x.png" type="Texture" id=9]
+[ext_resource path="res://Assets/Other/player-marker.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_16px.fnt" type="BitmapFont" id=11]
+[ext_resource path="res://Dialogue/Dialogue.gd" type="Script" id=12]
+[ext_resource path="res://Assets/Icons/pause_icon_brown.png" type="Texture" id=13]
+[ext_resource path="res://Assets/Icons/Item_Black17.png" type="Texture" id=14]
+[ext_resource path="res://Assets/Icons/bp_icon.png" type="Texture" id=15]
+[ext_resource path="res://Assets/Icons/book_skill_brown.png" type="Texture" id=16]
+[ext_resource path="res://Assets/HUD_And_GUI/LocationInMiniMap.png" type="Texture" id=17]
+[ext_resource path="res://Assets/Icons/PauseIcon.png" type="Texture" id=18]
+[ext_resource path="res://Assets/Other/White16x16.png" type="Texture" id=19]
+[ext_resource path="res://Assets/Theme2/menu_button.png" type="Texture" id=20]
+[ext_resource path="res://Screens/Main/Main.gd" type="Script" id=21]
+[ext_resource path="res://Assets/Theme/endesga-32-32x.png" type="Texture" id=22]
+[ext_resource path="res://GUI/Inventory/Inventory.tscn" type="PackedScene" id=23]
+[ext_resource path="res://GUI/Quest/Quest.tscn" type="PackedScene" id=24]
+[ext_resource path="res://GUI/Skill/Skill.tscn" type="PackedScene" id=25]
+[ext_resource path="res://Assets/Theme2/button_style_2.png" type="Texture" id=26]
+[ext_resource path="res://Assets/Background/dialogue_background.png" type="Texture" id=27]
+[ext_resource path="res://Assets/Theme2/icon_bg.png" type="Texture" id=28]
+[ext_resource path="res://HUD/MiniMap/MiniMap.gd" type="Script" id=29]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_8px.fnt" type="BitmapFont" id=30]
+[ext_resource path="res://Assets/Fonts/theme_font/uni_05_53_10px.fnt" type="BitmapFont" id=31]
+[ext_resource path="res://Screens/Main/TextAlert.gd" type="Script" id=32]
+[ext_resource path="res://Assets/Music/awesomeness.wav" type="AudioStream" id=33]
+[ext_resource path="res://Screens/Main/HUD.gd" type="Script" id=34]
+
+[sub_resource type="Animation" id=1]
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FadeColor:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FadeColor:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("FadeColor:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FadeColor:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0, 0, 0, 0.705882 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0, 0, 0, 0.705882 )
+
+[sub_resource type="Animation" id=6]
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("MapName:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4, 0.7, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("RightPanel:margin_left")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.7, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 600.0, 0.0, 0.0, 600.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("RightPanel:margin_top")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.2, 0.7, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0639954, 0.0639954, 0.0639954, 0.0639954 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("RightPanel:margin_right")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.7, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 600.0, 0.0, 0.0, 600.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("RightPanel:margin_bottom")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.2, 0.7, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -0.0640106, -0.0640106, -0.0640106, -0.0640106 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("LeftPanel:margin_left")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.2, 0.7, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -600.0, 0.0, 0.0, -600.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("LeftPanel:margin_top")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.2, 0.7, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0639954, 0.0639954, 0.0639954, 0.0639954 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("LeftPanel:margin_right")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.2, 0.7, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -600.0, 0.0, 0.0, -600.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("LeftPanel:margin_bottom")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.2, 0.7, 1.7, 2.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -0.0640106, -0.0640106, -0.0640106, -0.0640106 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "play"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 1.3, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Label:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1.3, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -128, -7 ), Vector2( -128, -46 ), Vector2( -128, -46 ), Vector2( -128, -104 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=8]
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bg:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -512.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bg:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -288.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bg:margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -512.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Bg:margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ -288.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bg:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -512.0, 0.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bg:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -288.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bg:margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -512.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Bg:margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -288.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bg:margin_left")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -512.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Bg:margin_top")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -288.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Bg:margin_right")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -512.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Bg:margin_bottom")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -288.0 ]
+}
+
+[node name="Main" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 21 )
+
+[node name="Game" type="Node2D" parent="."]
+pause_mode = 1
+
+[node name="FPS" type="CanvasLayer" parent="."]
+pause_mode = 1
+
+[node name="FPS" type="Control" parent="FPS"]
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FPS" type="Label" parent="FPS/FPS"]
+margin_left = 120.0
+margin_top = 8.0
+margin_right = 142.0
+margin_bottom = 22.0
+custom_fonts/font = ExtResource( 8 )
+text = "FPS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HUD" type="CanvasLayer" parent="."]
+pause_mode = 1
+script = ExtResource( 34 )
+
+[node name="HealthBar" parent="HUD" instance=ExtResource( 4 )]
+
+[node name="MiniMap" type="Control" parent="HUD"]
+anchor_left = 1.0
+anchor_right = 1.0
+script = ExtResource( 29 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MapName" type="Label" parent="HUD/MiniMap"]
+margin_left = -72.0
+margin_top = 71.0
+margin_right = -8.0
+margin_bottom = 84.0
+custom_fonts/font = ExtResource( 30 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "MAP XXX"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map" type="Sprite" parent="HUD/MiniMap"]
+position = Vector2( -40, 39 )
+texture = ExtResource( 3 )
+
+[node name="1" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( -23, -23 )
+texture = ExtResource( 17 )
+
+[node name="2" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( -8, -23 )
+texture = ExtResource( 17 )
+
+[node name="3" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( 7, -23 )
+texture = ExtResource( 17 )
+
+[node name="4" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( 22, -23 )
+texture = ExtResource( 17 )
+
+[node name="5" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( -23, -8 )
+texture = ExtResource( 17 )
+
+[node name="6" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( -8, -8 )
+texture = ExtResource( 17 )
+
+[node name="7" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( 7, -8 )
+texture = ExtResource( 17 )
+
+[node name="8" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( 22, -8 )
+texture = ExtResource( 17 )
+
+[node name="9" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( -23, 7 )
+texture = ExtResource( 17 )
+
+[node name="10" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( -8, 7 )
+texture = ExtResource( 17 )
+
+[node name="11" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( 7, 7 )
+texture = ExtResource( 17 )
+
+[node name="12" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0, 0, 0, 0.392157 )
+position = Vector2( 22, 7 )
+texture = ExtResource( 17 )
+
+[node name="13" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0.894118, 0.65098, 0.447059, 1 )
+position = Vector2( -23, 22 )
+texture = ExtResource( 17 )
+
+[node name="14" type="Sprite" parent="HUD/MiniMap/Map"]
+position = Vector2( -8, 22 )
+texture = ExtResource( 17 )
+
+[node name="15" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0.443137, 0.580392, 0.4, 1 )
+position = Vector2( 7, 22 )
+texture = ExtResource( 17 )
+
+[node name="16" type="Sprite" parent="HUD/MiniMap/Map"]
+self_modulate = Color( 0.662745, 0.254902, 0.254902, 1 )
+position = Vector2( 22, 22 )
+texture = ExtResource( 17 )
+
+[node name="PlayerMarker" type="Sprite" parent="HUD/MiniMap"]
+position = Vector2( -63, 61 )
+texture = ExtResource( 10 )
+
+[node name="Dialogue" type="CanvasLayer" parent="."]
+layer = 6
+script = ExtResource( 12 )
+
+[node name="DialoguePanel" type="TextureRect" parent="Dialogue"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -230.0
+margin_top = -98.0
+margin_right = 230.0
+margin_bottom = -18.0
+texture = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NpcName" type="Label" parent="Dialogue/DialoguePanel"]
+margin_left = 30.0
+margin_right = 87.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "XXXXXXXX"
+valign = 1
+uppercase = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Next" type="TextureButton" parent="Dialogue/DialoguePanel"]
+margin_left = 150.0
+margin_top = 57.0
+margin_right = 198.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 48, 16 )
+texture_normal = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Dialogue/DialoguePanel/Next"]
+margin_right = 48.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "NEXT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AcceptQuest" type="TextureButton" parent="Dialogue/DialoguePanel"]
+visible = false
+margin_left = 150.0
+margin_top = 57.0
+margin_right = 198.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 48, 16 )
+texture_normal = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Dialogue/DialoguePanel/AcceptQuest"]
+margin_right = 48.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "ACCEPT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SuccessQuest" type="TextureButton" parent="Dialogue/DialoguePanel"]
+visible = false
+margin_left = 150.0
+margin_top = 57.0
+margin_right = 198.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 48, 16 )
+texture_normal = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Dialogue/DialoguePanel/SuccessQuest"]
+margin_right = 48.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "SUCCESS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Close" type="TextureButton" parent="Dialogue/DialoguePanel"]
+margin_left = 249.0
+margin_top = 57.0
+margin_right = 297.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 48, 16 )
+texture_normal = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Dialogue/DialoguePanel/Close"]
+margin_right = 48.0
+margin_bottom = 12.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "CLOSE"
+align = 1
+valign = 1
+uppercase = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Dialogue/DialoguePanel"]
+margin_left = 31.0
+margin_top = 26.0
+margin_right = 335.0
+margin_bottom = 55.0
+custom_fonts/normal_font = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="first_dialog_timer" type="Timer" parent="Dialogue"]
+wait_time = 0.05
+
+[node name="quest_dialog_timer" type="Timer" parent="Dialogue"]
+wait_time = 0.05
+
+[node name="GUI" type="CanvasLayer" parent="."]
+pause_mode = 1
+layer = 5
+script = ExtResource( 6 )
+
+[node name="GUIButton" type="Control" parent="GUI"]
+anchor_left = 1.0
+anchor_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="icon_bg" type="Sprite" parent="GUI/GUIButton"]
+position = Vector2( -84, 19 )
+texture = ExtResource( 28 )
+
+[node name="icon_bg2" type="Sprite" parent="GUI/GUIButton"]
+position = Vector2( -107, 19 )
+texture = ExtResource( 28 )
+
+[node name="icon_bg3" type="Sprite" parent="GUI/GUIButton"]
+position = Vector2( -130, 19 )
+texture = ExtResource( 28 )
+
+[node name="icon_bg4" type="Sprite" parent="GUI/GUIButton"]
+position = Vector2( -153, 19 )
+texture = ExtResource( 28 )
+
+[node name="PauseButton" type="TextureButton" parent="GUI/GUIButton"]
+margin_left = -92.0
+margin_top = 11.0
+margin_right = -76.0
+margin_bottom = 27.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackpackButton" type="TextureButton" parent="GUI/GUIButton"]
+margin_left = -115.0
+margin_top = 11.0
+margin_right = -99.0
+margin_bottom = 27.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuestButton" type="TextureButton" parent="GUI/GUIButton"]
+margin_left = -138.0
+margin_top = 11.0
+margin_right = -122.0
+margin_bottom = 27.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 14 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SkillButton" type="TextureButton" parent="GUI/GUIButton"]
+margin_left = -161.0
+margin_top = 11.0
+margin_right = -145.0
+margin_bottom = 27.0
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="GUI/GUIButton"]
+visible = false
+position = Vector2( -74, -22 )
+normal = ExtResource( 18 )
+
+[node name="Inventory" parent="GUI" instance=ExtResource( 23 )]
+
+[node name="Quest" parent="GUI" instance=ExtResource( 24 )]
+visible = false
+
+[node name="Skill" parent="GUI" instance=ExtResource( 25 )]
+visible = false
+
+[node name="PauseMenu" type="CanvasLayer" parent="."]
+pause_mode = 2
+layer = 90
+script = ExtResource( 5 )
+
+[node name="Pause" type="Control" parent="PauseMenu"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.588235 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseMenu/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.0
+margin_top = -104.0
+margin_right = 116.0
+margin_bottom = -80.0
+custom_fonts/font = ExtResource( 11 )
+text = "PAUSE MENU"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -48.0
+margin_top = -38.0
+margin_right = 48.0
+margin_bottom = 118.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resume" type="TextureButton" parent="PauseMenu/Pause/VBoxContainer"]
+margin_right = 96.0
+margin_bottom = 28.0
+texture_normal = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseMenu/Pause/VBoxContainer/Resume"]
+margin_right = 96.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 8 )
+text = "RESUME"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Save" type="TextureButton" parent="PauseMenu/Pause/VBoxContainer"]
+margin_top = 32.0
+margin_right = 96.0
+margin_bottom = 60.0
+texture_normal = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseMenu/Pause/VBoxContainer/Save"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -4.0
+custom_fonts/font = ExtResource( 8 )
+text = "SAVE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Settings" type="TextureButton" parent="PauseMenu/Pause/VBoxContainer"]
+visible = false
+margin_top = 64.0
+margin_right = 96.0
+margin_bottom = 92.0
+texture_normal = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseMenu/Pause/VBoxContainer/Settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -4.0
+custom_fonts/font = ExtResource( 8 )
+text = "SETTINGS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="TextureButton" parent="PauseMenu/Pause/VBoxContainer"]
+visible = false
+margin_top = 96.0
+margin_right = 96.0
+margin_bottom = 124.0
+texture_normal = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseMenu/Pause/VBoxContainer/Credits"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -4.0
+custom_fonts/font = ExtResource( 8 )
+text = "CREDITS"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Exit" type="TextureButton" parent="PauseMenu/Pause/VBoxContainer"]
+margin_top = 64.0
+margin_right = 96.0
+margin_bottom = 92.0
+texture_normal = ExtResource( 20 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="PauseMenu/Pause/VBoxContainer/Exit"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -4.0
+custom_fonts/font = ExtResource( 8 )
+text = "EXIT"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeLayer" type="CanvasLayer" parent="."]
+layer = 99
+
+[node name="FadeBackground" type="ColorRect" parent="FadeLayer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FadeColor" type="ColorRect" parent="FadeLayer"]
+visible = false
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeLayer"]
+autoplay = "Default"
+anims/Default = SubResource( 1 )
+anims/Fade1 = SubResource( 2 )
+anims/Fade2 = SubResource( 3 )
+
+[node name="GameAlert" type="CanvasLayer" parent="."]
+pause_mode = 1
+layer = 80
+
+[node name="ChangeMapAlert" type="Control" parent="GameAlert"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftPanel" type="Panel" parent="GameAlert/ChangeMapAlert"]
+anchor_top = 0.347
+anchor_right = 0.5
+anchor_bottom = 0.653
+margin_left = -600.0
+margin_top = 0.0639954
+margin_right = -600.0
+margin_bottom = -0.0640106
+custom_styles/panel = SubResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightPanel" type="Panel" parent="GameAlert/ChangeMapAlert"]
+anchor_left = 0.5
+anchor_top = 0.347
+anchor_right = 1.0
+anchor_bottom = 0.653
+margin_left = 600.0
+margin_top = 0.0639954
+margin_right = 600.0
+margin_bottom = -0.0640106
+custom_styles/panel = SubResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameAlert/ChangeMapAlert"]
+anims/play = SubResource( 6 )
+
+[node name="MapName" type="Label" parent="GameAlert/ChangeMapAlert"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -133.0
+margin_top = -10.0
+margin_right = 133.0
+margin_bottom = 9.0
+custom_fonts/font = ExtResource( 30 )
+text = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextAlert" type="Control" parent="GameAlert"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+script = ExtResource( 32 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="GameAlert/TextAlert"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -128.0
+margin_top = -7.0
+margin_right = 128.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 31 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Hello World"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameAlert/TextAlert"]
+anims/play = SubResource( 7 )
+
+[node name="MapFade" type="CanvasLayer" parent="."]
+layer = 80
+
+[node name="Bg" type="TextureRect" parent="MapFade"]
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -512.0
+margin_top = -288.0
+margin_right = -512.0
+margin_bottom = -288.0
+texture = ExtResource( 19 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="MapFade"]
+autoplay = "default"
+anims/default = SubResource( 8 )
+anims/fade_in = SubResource( 9 )
+anims/fade_out = SubResource( 10 )
+
+[node name="ScreenTimer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
+
+[node name="LoadGameStateTimer" type="Timer" parent="."]
+process_mode = 0
+one_shot = true
+
+[node name="GUI2" type="Sprite" parent="."]
+visible = false
+position = Vector2( -144, 156 )
+texture = ExtResource( 1 )
+
+[node name="endesga-32-32x" type="Sprite" parent="."]
+visible = false
+position = Vector2( 176, -32 )
+texture = ExtResource( 22 )
+
+[node name="nanner-32-32x" type="Sprite" parent="."]
+visible = false
+position = Vector2( 176, 352 )
+texture = ExtResource( 7 )
+
+[node name="aap-64-32x" type="Sprite" parent="."]
+visible = false
+position = Vector2( 626, -104 )
+texture = ExtResource( 9 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 33 )
+[connection signal="pressed" from="Dialogue/DialoguePanel/Next" to="Dialogue" method="_on_Next_pressed"]
+[connection signal="pressed" from="Dialogue/DialoguePanel/AcceptQuest" to="Dialogue" method="_on_AcceptQuest_pressed"]
+[connection signal="pressed" from="Dialogue/DialoguePanel/SuccessQuest" to="Dialogue" method="_on_SuccessQuest_pressed"]
+[connection signal="pressed" from="Dialogue/DialoguePanel/Close" to="Dialogue" method="_on_Close_pressed"]
+[connection signal="pressed" from="GUI/GUIButton/PauseButton" to="PauseMenu" method="_on_PauseButton_pressed"]
+[connection signal="pressed" from="GUI/GUIButton/BackpackButton" to="GUI" method="_on_BackpackButton_pressed"]
+[connection signal="pressed" from="GUI/GUIButton/QuestButton" to="GUI" method="_on_QuestButton_pressed"]
+[connection signal="pressed" from="GUI/GUIButton/SkillButton" to="GUI" method="_on_SkillButton_pressed"]
+[connection signal="pressed" from="GUI/GUIButton/TouchScreenButton" to="PauseMenu" method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="PauseMenu/Pause/VBoxContainer/Resume" to="PauseMenu" method="_on_Resume_pressed"]
+[connection signal="pressed" from="PauseMenu/Pause/VBoxContainer/Save" to="PauseMenu" method="_on_Save_pressed"]
+[connection signal="pressed" from="PauseMenu/Pause/VBoxContainer/Exit" to="PauseMenu" method="_on_Exit_pressed"]
+[connection signal="timeout" from="ScreenTimer" to="." method="_on_ScreenTimer_timeout"]
+[connection signal="timeout" from="LoadGameStateTimer" to="." method="_on_LoadGameStateTimer_timeout"]
+[connection signal="finished" from="Music" to="." method="_on_Music_finished"]

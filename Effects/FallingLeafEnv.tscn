@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Assets/Props/leaf_fall.png" type="Texture" id=1]
+
+[node name="FallingLeafEnv" type="CPUParticles2D"]
+z_index = 2
+amount = 30
+lifetime = 3.0
+preprocess = 60.0
+speed_scale = 0.05
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 20.0
+gravity = Vector2( -250, 98 )
+angular_velocity = 360.0
+radial_accel = 100.0
+color = Color( 0.996078, 1, 0.282353, 1 )

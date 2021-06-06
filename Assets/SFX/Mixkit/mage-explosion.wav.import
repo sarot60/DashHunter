@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/mage-explosion.wav-035ac202a49b7c40fcfbee8ef7891690.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Mixkit/mage-explosion.wav"
+dest_files=[ "res://.import/mage-explosion.wav-035ac202a49b7c40fcfbee8ef7891690.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/drink_hp_sp.wav-a33a9c18e372126d8f14bfeca904782b.sample"
+
+[deps]
+
+source_file="res://Assets/SFX/Mixkit/drink_hp_sp.wav"
+dest_files=[ "res://.import/drink_hp_sp.wav-a33a9c18e372126d8f14bfeca904782b.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
